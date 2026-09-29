@@ -1,0 +1,21 @@
+/* FEATURE 1 – Search. Only edit this file for search styles. */
+.search { display: flex; gap: 0.5rem; }
+
+.search__input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.search__button {
+  padding: 0.75rem 1.25rem;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.search__button:hover { background: #22405f; }

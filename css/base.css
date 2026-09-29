@@ -1,0 +1,40 @@
+/* Design tokens + resets. Change tokens here, not hard-coded colours elsewhere. */
+:root {
+  --ink: #14263a;
+  --ink-soft: #4a5d72;
+  --paper: #f3f7fb;
+  --panel: rgba(255, 255, 255, 0.72);
+  --sun: #f2a900;
+  --line: rgba(20, 38, 58, 0.14);
+  --radius: 14px;
+  --font: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* The sky changes with the weather (see data-sky on <body>) */
+  --sky-top: #dcecfb;
+  --sky-bottom: #f7fbff;
+}
+
+body[data-sky="cloudy"] { --sky-top: #cfd8e1; --sky-bottom: #eef1f5; }
+body[data-sky="rain"]   { --sky-top: #a9bccd; --sky-bottom: #dbe4ec; }
+body[data-sky="snow"]   { --sky-top: #e2e9f2; --sky-bottom: #fbfcfe; }
+body[data-sky="storm"]  { --sky-top: #7d8ea3; --sky-bottom: #c3ccd6; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font);
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--sky-top), var(--sky-bottom));
+  background-attachment: fixed;
+  transition: background 0.6s ease;
+}
+
+button, input { font: inherit; color: inherit; }
+
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

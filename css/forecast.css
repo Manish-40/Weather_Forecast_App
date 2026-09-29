@@ -1,0 +1,16 @@
+/* FEATURE 3 – Forecast. Only edit this file for these styles. */
+.forecast { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.25rem; }
+
+.forecast__day {
+  display: grid;
+  grid-template-columns: 6rem 2rem 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.forecast__day:last-child { border-bottom: 0; }
+.forecast__name { font-weight: 600; }
+.forecast__label { color: var(--ink-soft); }
+.forecast__range { font-variant-numeric: tabular-nums; }
+.forecast__low { color: var(--ink-soft); margin-left: 0.5rem; }

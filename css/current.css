@@ -1,0 +1,6 @@
+/* FEATURE 2 – Current weather. Only edit this file for these styles. */
+.current { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.current__city { margin: 0; font-size: 1.1rem; color: var(--ink-soft); }
+.current__temp { margin: 0; font-size: clamp(3.5rem, 14vw, 6rem); font-weight: 800; line-height: 1; letter-spacing: -0.04em; }
+.current__label { margin: 0.25rem 0 0; font-size: 1.1rem; }
+.current__icon { font-size: clamp(3.5rem, 14vw, 5.5rem); line-height: 1; }
