@@ -1,7 +1,7 @@
 // FEATURE 1 – Search
 // Owner: Contributor 1
 import { searchAndLoad } from "../actions.js";
-import { getState } from "../state.js";
+import { getState, subscribe } from "../state.js";
 
 export function initSearch(root) {
   root.innerHTML = `
@@ -15,9 +15,14 @@ export function initSearch(root) {
 
   const form = root.querySelector("form");
   const input = root.querySelector(".search__input");
+  const button = root.querySelector(".search__button");
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    // Ignore extra submits (for example Enter key) while a request is running
+    if (getState().status === "loading") return;
+
     await searchAndLoad(input.value);
 
     // Clear the box only if the search worked; keep the text if it failed
@@ -25,4 +30,16 @@ export function initSearch(root) {
       input.value = "";
     }
   });
+
+  // Disable the button and mark the form as busy while loading
+  function syncLoading({ status }) {
+    const isLoading = status === "loading";
+    button.disabled = isLoading;
+    button.textContent = isLoading ? "Searching…" : "Search";
+    button.setAttribute("aria-busy", String(isLoading));
+    form.setAttribute("aria-busy", String(isLoading));
+  }
+
+  subscribe(syncLoading);
+  syncLoading(getState()); // set the correct state on first load
 }
