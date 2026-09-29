@@ -1,6 +1,7 @@
 // FEATURE 1 – Search
 // Owner: Contributor 1
 import { searchAndLoad } from "../actions.js";
+import { getState } from "../state.js";
 
 export function initSearch(root) {
   root.innerHTML = `
@@ -12,8 +13,16 @@ export function initSearch(root) {
     <!-- TODO (Feature 1): "Use my location" button and recent searches list -->
   `;
 
-  root.querySelector("form").addEventListener("submit", (e) => {
+  const form = root.querySelector("form");
+  const input = root.querySelector(".search__input");
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    searchAndLoad(new FormData(e.target).get("q"));
+    await searchAndLoad(input.value);
+
+    // Clear the box only if the search worked; keep the text if it failed
+    if (getState().status === "ready") {
+      input.value = "";
+    }
   });
 }
