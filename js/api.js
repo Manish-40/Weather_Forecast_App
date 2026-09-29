@@ -10,8 +10,8 @@ export async function searchCity(name) {
   if (!res.ok) throw new Error("City search failed. Please try again.");
   const data = await res.json();
   if (!data.results?.length) throw new Error(`No city found for "${name}".`);
-  const { name: cityName, country, latitude, longitude } = data.results[0];
-  return { name: cityName, country, latitude, longitude };
+  const { name: cityName, admin1, country, latitude, longitude } = data.results[0];
+  return { name: cityName, region: admin1, country, latitude, longitude };
 }
 
 export async function getWeather({ latitude, longitude, units = "celsius" }) {

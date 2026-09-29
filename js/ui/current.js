@@ -8,6 +8,15 @@ export function initCurrent(root) {
   subscribe((state) => render(root, state));
 }
 
+// Builds "Springfield, Illinois, United States".
+// Skips missing parts and repeated names (e.g. "Singapore, Singapore").
+function formatLocation({ name, region, country }) {
+  return [name, region, country]
+    .filter(Boolean)
+    .filter((part, i, parts) => part !== parts[i - 1])
+    .join(", ");
+}
+
 function render(root, { city, weather, units }) {
   if (!city || !weather) {
     root.innerHTML = "";
@@ -19,7 +28,7 @@ function render(root, { city, weather, units }) {
   root.innerHTML = `
     <div class="panel current">
       <div>
-        <p class="current__city">${city.name}${city.country ? ", " + city.country : ""}</p>
+        <p class="current__city">${formatLocation(city)}</p>
         <p class="current__temp">${formatTemp(temperature_2m, units)}</p>
         <p class="current__label">${info.label}</p>
       </div>
