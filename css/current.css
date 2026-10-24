@@ -4,3 +4,11 @@
 .current__temp { margin: 0; font-size: clamp(3.5rem, 14vw, 6rem); font-weight: 800; line-height: 1; letter-spacing: -0.04em; }
 .current__label { margin: 0.25rem 0 0; font-size: 1.1rem; }
 .current__icon { font-size: clamp(3.5rem, 14vw, 5.5rem); line-height: 1; }
+
+/* "Updated 3:42 PM" */
+.current__updated {
+  margin: 0.4rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
