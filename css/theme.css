@@ -1,0 +1,42 @@
+
+#settings { display: flex; align-items: center; gap: 0.5rem; }
+
+.theme-toggle {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--panel);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.theme-toggle:hover { background: rgba(127, 127, 127, 0.18); }
+
+/* ---------- Dark colour tokens ---------- */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #e8eef5;
+  --ink-soft: #a9b8c8;
+  --paper: #0f1a26;
+  --panel: rgba(20, 34, 50, 0.72);
+  --line: rgba(232, 238, 245, 0.16);
+}
+
+/* Dark sky for every weather mood (selectors are strong enough to beat base.css) */
+:root[data-theme="dark"] body[data-sky="clear"]  { --sky-top: #0e2236; --sky-bottom: #17324d; }
+:root[data-theme="dark"] body[data-sky="cloudy"] { --sky-top: #1b2530; --sky-bottom: #2a3540; }
+:root[data-theme="dark"] body[data-sky="rain"]   { --sky-top: #16222e; --sky-bottom: #24323f; }
+:root[data-theme="dark"] body[data-sky="snow"]   { --sky-top: #26323f; --sky-bottom: #3a4856; }
+:root[data-theme="dark"] body[data-sky="storm"]  { --sky-top: #10151c; --sky-bottom: #222b36; }
+
+/* ---------- Fix hard-coded colours that clash with dark mode ---------- */
+/* Buttons used a dark fill with white text; flip them to a sun-coloured fill */
+:root[data-theme="dark"] .search__button { background: var(--sun); color: #14263a; }
+:root[data-theme="dark"] .search__button:hover:not(:disabled) { background: #ffc233; }
+:root[data-theme="dark"] .settings__btn--active { background: var(--sun); color: #14263a; }
+
+/* Lighter error and accent colours so they stay readable */
+:root[data-theme="dark"] .status--error { color: #ff8a80; }
+:root[data-theme="dark"] .forecast__rain { color: #7cc0f0; }

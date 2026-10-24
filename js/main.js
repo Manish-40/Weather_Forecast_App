@@ -1,4 +1,4 @@
-// Entry point: wires the UI modules to their mount points.
+import { initTheme } from "./ui/theme.js";
 import { subscribe } from "./state.js";
 import { describeWeather } from "./utils/weather-codes.js";
 import { formatTemp } from "./utils/format.js";
@@ -11,6 +11,7 @@ import { searchAndLoad } from "./actions.js";
 const $ = (id) => document.getElementById(id);
 
 initSettings($("settings"));
+initTheme($("settings"));
 initSearch($("search"));
 initCurrent($("current"));
 initForecast($("forecast"));

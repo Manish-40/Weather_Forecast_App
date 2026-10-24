@@ -11,6 +11,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet" />
 
   <!-- One CSS file per feature area = fewer merge conflicts -->
+   <script>
+  try {
+    var t = localStorage.getItem("skyline-theme");
+    if (t !== "dark" && t !== "light") {
+      t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+   </script>
    <!-- Adding script toggle button for dark and light mode -->
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/layout.css" />
@@ -18,6 +27,7 @@
   <link rel="stylesheet" href="css/current.css" />
   <link rel="stylesheet" href="css/forecast.css" />
   <link rel="stylesheet" href="css/settings.css" />
+  <link rel="stylesheet" href="css/theme.css" />
   <!-- Adding link for dark/light mode toggle -->
 </head>
 <body data-sky="clear">
