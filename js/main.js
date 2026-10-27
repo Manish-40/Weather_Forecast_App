@@ -35,6 +35,8 @@ subscribe(({ status, error, city, weather, units }) => {
     document.title = `${city.name} ${temp} – Skyline`;
   }
 });
+console.log("Server Started");
+
 
 // Show something on first load
 searchAndLoad("Mumbai");
